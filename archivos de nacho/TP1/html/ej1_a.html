@@ -1,0 +1,203 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Ejercicio 1.a</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2024-09-07"><meta name="DC.source" content="ej1_a.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Ejercicio 1.a</h1><p>Desarrollo del ejercicio 1.a.</p><pre class="codeinput">clear <span class="string">all</span>;
+clear <span class="string">vars</span>;
+</pre><p>Fijamos la semilla del generador de n&uacute;meros aleatorios para tener repetitividad.</p><pre class="codeinput">rng(1)
+</pre><p>Fijamos la cantidad de muestras.</p><pre class="codeinput">N=10000;
+</pre><p>Creamos 2 vectores de longitud N que contienen las realizaciones de las variables aleatorias uniformes entre 0 y 1.</p><pre class="codeinput">U1 = rand(1,N);
+U2 = rand(1,N);
+</pre><p>Generamos las variables Z1 y Z2 con las funciones propuestas en las consignas.</p><pre class="codeinput">Z1=sqrt(-2*log(U1)).*cos(2*pi*U2);
+Z2=sqrt(-2*log(U1)).*sin(2*pi*U2);
+</pre><p>Calculamos las medias y varianzas.</p><pre class="codeinput">mean_Z1 = mean(Z1);
+mean_Z2 = mean(Z2);
+var_Z1 = var(Z1);
+var_Z2 = var(Z2);
+</pre><p>Creamos los histogramas para visualizar la forma de las PDF de las variables. N&oacute;tese que se asemejan a Normales.</p><pre class="codeinput">figure(<span class="string">'Position'</span>, [0, 0, 700, 550]);
+hold <span class="string">on</span>;
+h1 = histogram(Z1,40,<span class="string">"normalization"</span>,<span class="string">"pdf"</span>);
+y = min(Z1):0.1:max(Z1);
+mu = mean_Z1;
+sigma = sqrt(var_Z1);
+f = exp(-(y-mu).^2./(2*sigma^2))./(sigma*sqrt(2*pi));
+plot(y,f,<span class="string">'LineWidth'</span>,1.5);
+legend(<span class="string">'Histograma'</span>,sprintf(<span class="string">'Normal(%f,%f)'</span>,mean_Z1,var_Z1^2))
+title(<span class="string">'Hisograma de Z1 con distribuci&oacute;n normal superpuesta'</span>);
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="ej1_a_01.png" alt=""> <pre class="codeinput">figure(<span class="string">'Position'</span>, [0, 0, 700, 550]);
+hold <span class="string">on</span>;
+h2 = histogram(Z2,40,<span class="string">"normalization"</span>,<span class="string">"pdf"</span>);
+y = min(Z2):0.1:max(Z2);
+mu = mean_Z2;
+sigma = sqrt(var_Z2);
+f = exp(-(y-mu).^2./(2*sigma^2))./(sigma*sqrt(2*pi));
+plot(y,f,<span class="string">'LineWidth'</span>,1.5);
+legend(<span class="string">'Histograma'</span>,sprintf(<span class="string">'Normal(%f,%f)'</span>,mean_Z2,var_Z2^2))
+title(<span class="string">'Hisograma de Z2 con distribuci&oacute;n normal superpuesta'</span>);
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="ej1_a_02.png" alt=""> <p>coeficiente de correlaci&oacute;n de Pearson, la funci&oacute;n corrcoef coincide en definici&oacute;n matem&aacute;tica con la de Pearson</p><pre class="codeinput">Coef_correlacion = corrcoef(Z1,Z2)
+
+<span class="comment">% Devuelve una matriz, nos importan las esquinas 01 y 10, esas con las</span>
+<span class="comment">% correlaciones de Z1 con Z2 y Z2 con Z1</span>
+
+<span class="comment">% El scatterplot devuelve una mancha bastante circular, wikipedia tiene una</span>
+<span class="comment">% imagen que indica que esa forma indica que la correlaci&oacute;n es cercana a 0.</span>
+</pre><pre class="codeoutput">
+Coef_correlacion =
+
+    1.0000   -0.0127
+   -0.0127    1.0000
+
+</pre><p>Scatter plot entre las variables:</p><pre class="codeinput">figure(<span class="string">'Position'</span>, [0, 0, 700, 700]);
+hold <span class="string">on</span>
+scatter(Z1,Z2);
+title(<span class="string">'Grpafico de dispersi&oacute;n de Z2 con Z1'</span>);
+text(-4+0.2,-5+0.5,sprintf(<span class="string">"Coeficiente de correlaci&oacute;n = %f"</span>,Coef_correlacion(1,2)), <span class="string">'FontSize'</span>, 12, <span class="string">'Color'</span>, <span class="string">'black'</span>);
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="ej1_a_03.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Ejercicio 1.a
+% Desarrollo del ejercicio 1.a. 
+
+clear all;
+clear vars;
+%%
+% Fijamos la semilla del generador de números aleatorios para tener repetitividad.
+rng(1)
+%%
+% Fijamos la cantidad de muestras.
+N=10000;
+
+%%
+% Creamos 2 vectores de longitud N que contienen las realizaciones de las variables aleatorias uniformes entre 0 y 1.
+
+U1 = rand(1,N);
+U2 = rand(1,N);
+%%
+% Generamos las variables Z1 y Z2 con las funciones propuestas en las
+% consignas.
+Z1=sqrt(-2*log(U1)).*cos(2*pi*U2);
+Z2=sqrt(-2*log(U1)).*sin(2*pi*U2);
+
+%%
+% Calculamos las medias y varianzas.
+mean_Z1 = mean(Z1);
+mean_Z2 = mean(Z2);
+var_Z1 = var(Z1);
+var_Z2 = var(Z2);
+
+%%
+% Creamos los histogramas para visualizar la forma de las PDF de las
+% variables. Nótese que se asemejan a Normales. 
+figure('Position', [0, 0, 700, 550]);
+hold on;
+h1 = histogram(Z1,40,"normalization","pdf");
+y = min(Z1):0.1:max(Z1);
+mu = mean_Z1;
+sigma = sqrt(var_Z1);
+f = exp(-(y-mu).^2./(2*sigma^2))./(sigma*sqrt(2*pi));
+plot(y,f,'LineWidth',1.5);
+legend('Histograma',sprintf('Normal(%f,%f)',mean_Z1,var_Z1^2))
+title('Hisograma de Z1 con distribución normal superpuesta');
+hold off
+
+%%
+figure('Position', [0, 0, 700, 550]);
+hold on;
+h2 = histogram(Z2,40,"normalization","pdf");
+y = min(Z2):0.1:max(Z2);
+mu = mean_Z2;
+sigma = sqrt(var_Z2);
+f = exp(-(y-mu).^2./(2*sigma^2))./(sigma*sqrt(2*pi));
+plot(y,f,'LineWidth',1.5);
+legend('Histograma',sprintf('Normal(%f,%f)',mean_Z2,var_Z2^2))
+title('Hisograma de Z2 con distribución normal superpuesta');
+hold off
+
+%% 
+% coeficiente de correlación de Pearson, la función corrcoef coincide en
+% definición matemática con la de Pearson
+
+Coef_correlacion = corrcoef(Z1,Z2)
+
+% Devuelve una matriz, nos importan las esquinas 01 y 10, esas con las
+% correlaciones de Z1 con Z2 y Z2 con Z1
+
+% El scatterplot devuelve una mancha bastante circular, wikipedia tiene una
+% imagen que indica que esa forma indica que la correlación es cercana a 0.
+
+%%
+% Scatter plot entre las variables:
+figure('Position', [0, 0, 700, 700]);
+hold on
+scatter(Z1,Z2);
+title('Grpafico de dispersión de Z2 con Z1');
+text(-4+0.2,-5+0.5,sprintf("Coeficiente de correlación = %f",Coef_correlacion(1,2)), 'FontSize', 12, 'Color', 'black');
+hold off
+##### SOURCE END #####
+--></body></html>

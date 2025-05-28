@@ -1,0 +1,41 @@
+% Para la imagen img_01.png provista en el campus, defina realizaciones de un vector
+% X = [X1, X2]T seleccionando cada par de píxeles contiguos en la imagen (ver esquema en
+% siguiente filmina)
+% 1.
+% Haga un gráfico de dispersión del vector X.
+% 2.
+% Estime la matriz de covarianza de X y compute las proyecciones Y en las direcciones
+% principales. Haga un gráfico de dispersión de Y. Determine cuál de las componentes
+% puede ser descartada.
+% 3.
+% Defina la matriz de proyección V que descarta el autovector asociado al menor
+% autovalor. Obtenga la proyección YR de X en ese espacio reducido.
+% 4.
+% Reconstruya el conjunto de vectores XR con la transformación inversa.
+% 5.
+% Rearme la imagen a partir de los vectores reconstruidos y grafíquela
+
+clear all;
+
+img = imread('img_01.jpg');
+
+img_gris = rgb2gray(img);
+data = double(img_gris);
+%data = data/256; %ajustamos a entre 0 y 1 - no necesario creo
+sizeData = size(data);%el tamaño de la imagen
+rows=2;
+cols=sizeData(2)*sizeData(1)/2;
+img_out = reshape(data, [rows, cols]); % acá tenemos el vector correcto
+
+
+scatter(img_out(1,:),img_out(2,:))
+
+% queremos estimar la matriz de covarianza, usamos la función de cov
+Cx = cov(img_out(1,:),img_out(2,:));
+
+% ahora veamos los autovalores y autovectores
+[U,S,V]=svd(Cx)
+
+% definimos una matriz truncada de autovectores
+
+Vtruc = 
